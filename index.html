@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Titre</title>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/ee7a178a15.js" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Opan+Sans">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="playButton" class="play-button" onclick="startMusic()">Play Music</button>
+
+    <div class="parent-container">
+        <div class="child-container" id="one">
+            <img src="asset/img-video/IMG_4540.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_0258.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_8803.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_1276.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_1825.jpeg" width="100%" height="auto">
+        </div>
+        <div class="child-container" id="two">
+            <video width="100%" height="auto" autoplay muted loop>
+                <source src="asset/img-video/20FAF766-DE2D-480E-8C4E-AD9617414F9C.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video width="100%" height="auto" autoplay muted loop>
+                <source src="asset/img-video/recorded-12523266040641.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+            <video width="100%" height="auto" autoplay muted loop>
+                <source src="asset/img-video/C7613718-679B-480E-B8E2-88C042D235EF.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="asset/img-video/IMG_4871.jpeg" width="100%" height="auto">
+        </div>
+        <div class="child-container" id="three">
+            <img src="asset/img-video/IMG_7365.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_9196.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_7365.jpeg" width="100%" height="auto">
+            <img src="asset/img-video/IMG_0025.png" width="100%" height="auto">
+        </div>
+    </div>
+    <div class="greeting" id="scrollTarget">
+        <h1>Thanks for visiting</h1>
+        <a href="https://codepen.io/Mysha484" target="_blank"><i class="fa-brands fa-codepen"></i></a>
+    </div>
+
+    <audio id="background-music">
+        <source src="asset/music/music.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+        var audio = document.getElementById('background-music');
+    
+        function scrollTo(element, duration) {
+            var start = null;
+    
+            function step(timestamp) {
+                if (!start) start = timestamp;
+    
+                var progress = timestamp - start;
+                element.scrollTop = progress / duration * element.scrollHeight;
+    
+                if (progress < duration) {
+                    requestAnimationFrame(step);
+                }
+            }
+    
+            requestAnimationFrame(step);
+        }
+    
+        function startMusic() {
+            audio.play();
+    
+            // Faire défiler vers le bas après le début de la musique
+            var scrollTarget = document.querySelector('.greeting');
+            scrollTo(document.documentElement, 17000); // 15 secondes de défilement
+        }
+    
+        // Appel de la fonction startMusic() au clic sur le bouton
+        document.getElementById('playButton').addEventListener('click', startMusic);
+    </script>
+    
+</body>
+</html>
