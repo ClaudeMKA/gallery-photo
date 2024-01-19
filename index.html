@@ -56,29 +56,12 @@
     <script>
         var audio = document.getElementById('background-music');
     
-        function scrollTo(element, duration) {
-            var start = null;
-    
-            function step(timestamp) {
-                if (!start) start = timestamp;
-    
-                var progress = timestamp - start;
-                element.scrollTop = progress / duration * element.scrollHeight;
-    
-                if (progress < duration) {
-                    requestAnimationFrame(step);
-                }
-            }
-    
-            requestAnimationFrame(step);
-        }
     
         function startMusic() {
             audio.play();
     
             // Faire défiler vers le bas après le début de la musique
             var scrollTarget = document.querySelector('.greeting');
-            scrollTo(document.documentElement, 17000); // 15 secondes de défilement
         }
     
         // Appel de la fonction startMusic() au clic sur le bouton
